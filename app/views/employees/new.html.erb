@@ -1,0 +1,9 @@
+<section class="section">
+  <div class="container">
+    <h1 class="heading mb-4">New Employee</h1>
+
+    <%=render "form", employee: @employee, department: @department%>
+
+    <%=link_to "Back", department_path(@department), class: "button button--subtle"%>
+  </div>
+</section>

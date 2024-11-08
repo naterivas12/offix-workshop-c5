@@ -1,0 +1,26 @@
+<section class="section">
+  <div class="container">
+    <h1 class="heading mb-4">Departments</h1>
+
+    <%=link_to "New department", new_department_path, class: "button button--secondary button--sm mb-4 fit-content"%>
+
+    <div class="card-list">
+      <%@departments.each do |department|%>
+        <div class="department-card">
+            <%if department.cover.attached?%>
+              <%=image_tag department.cover, class: "department-card__image"%>
+            <%end%>
+          <div class="department-card__content">
+            <%=link_to department.name, department_path(department), class: "heading--sm"%>
+            <span class="content-sm"><%=department.employees_count%> employees</span>
+          </div>
+          <div>
+            <%=link_to "Edit", edit_department_path(department)%>
+            <%=link_to "Destroy", department_path(department), data: { turbo_method: :delete, 
+                                                                       turbo_confirm: "Seguro?" }%>
+          </div>
+        </div>
+      <%end%>
+    </div>
+  </div>
+</section>

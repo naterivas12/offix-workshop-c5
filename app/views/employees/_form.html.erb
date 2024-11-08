@@ -1,0 +1,48 @@
+<%=form_with model: employee, class: "flex flex-column gap-4 mb-4" do |f|%>
+  <div class="input">
+    <%=f.label :name, class: "content-xs overline"%>
+    <div class="input__container">
+      <%=f.text_field :name, class: "input__content"%>
+    </div>
+    <%=show_errors(employee, :name)%>
+  </div>
+
+  <div class="input">
+    <%=f.label :nationality, class: "content-xs overline"%>
+    <div class="input__container">
+      <%=f.text_field :nationality, class: "input__content"%>
+    </div>
+    <%=show_errors(employee, :nationality)%>
+  </div>
+
+  <div class="input">
+    <%=f.label :role, class: "content-xs overline"%>
+    <div class="input__container">
+      <%=f.text_field :role, class: "input__content"%>
+    </div>
+    <%=show_errors(employee, :role)%>
+  </div>
+
+  <div class="input">
+    <%=f.label :birth_date, class: "content-xs overline"%>
+    <div class="input__container">
+      <%=f.date_field :birth_date, class: "input__content"%>
+    </div>
+    <%=show_errors(employee, :birth_date)%>
+  </div>
+
+  <div class="select">
+    <%=f.label :department_id, class: "content-xs overline"%>
+    <%= f.collection_select :department_id, Department.order(:name), :id, :name, { selected: department.id }, class: "select__input" %>
+  </div>
+
+
+  <div>
+    <%=f.label :avatar, class: "content-xs overline"%>
+    <div>
+      <%=f.file_field :avatar, accept: "image/png, image/jpeg"%>
+    </div>
+  </div>
+
+  <%=f.submit class: "button button--secondary"%>
+<%end%>
